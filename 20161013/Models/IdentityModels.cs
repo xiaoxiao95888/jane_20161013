@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -24,10 +25,30 @@ namespace _20161013.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
+        public IDbSet<CurriculumVitae> CurriculumVitaes { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+        public override int SaveChanges()
+        {
+            var entities = ChangeTracker.Entries<IDtStamped>();
+
+            foreach (var dtStamped in entities)
+            {
+                if (dtStamped.State == EntityState.Added)
+                {
+                    dtStamped.Entity.CreatedTime = DateTime.Now;
+                    dtStamped.Entity.UpdateTime = DateTime.Now;
+                }
+
+                if (dtStamped.State == EntityState.Modified)
+                {
+                    dtStamped.Entity.UpdateTime = DateTime.Now;
+                }
+            }
+
+            return base.SaveChanges();
         }
     }
 }

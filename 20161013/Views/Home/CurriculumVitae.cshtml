@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "CurriculumVitae";
+}
+@Scripts.Render("~/bundles/CurriculumVitae")
+<h2>CurriculumVitae</h2>
+
+<div class="form-horizontal" role="form">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Name" data-bind="viewModel.Model.Name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Phone</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Phone" data-bind="viewModel.Model.Phone">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10">
+            <input type="email" class="form-control" placeholder="Email" data-bind="viewModel.Model.Email">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> option1
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> option2
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> option3
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default" data-bind="click:viewModel.Submit">Submit</button>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="luck-dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">抽奖啦</h4>
+            </div>
+            <div class="modal-body">
+                <p data-bind="viewModel.Model.Name"></p>
+                <p>来来来，抽个奖</p>
+                <a href="#" data-bind="click:viewModel.Luck">点击看看</a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

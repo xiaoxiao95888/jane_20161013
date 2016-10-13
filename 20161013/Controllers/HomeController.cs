@@ -26,5 +26,12 @@ namespace _20161013.Controllers
 
             return View();
         }
+
+        public ActionResult CurriculumVitae()
+        {
+            ViewBag.Message = "CurriculumVitae.";
+
+            return View();
+        }
     }
 }
